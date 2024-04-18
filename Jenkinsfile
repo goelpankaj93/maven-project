@@ -2,24 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('clean') {
+        stage('deploy to dev') {
+            when{
+                branch 'dev'
+            }
             steps {
-                bat 'mvn clean'
+                echo 'deploy to dev'
             }
         }
-        stage('build') {
+        stage('deploy to QA') {
+            when{
+                branch 'release'
+            }
             steps {
-                bat 'mvn package'
+                echo 'deploy to QA'
             }
         }
-        stage('archive') {
-            steps {
-                archiveArtifacts artifacts: '**/*.war'
+        stage('Production Environment"') {
+            when{
+                branch 'master'
             }
-        }
-        stage('Deploy to QA') {
             steps {
-                build job: 'delpoy_to_tomcat'
+                echo 'Production Environment'
             }
         }
     }
