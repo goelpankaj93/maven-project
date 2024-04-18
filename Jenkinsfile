@@ -16,6 +16,7 @@ pipeline {
             }
             steps {
                 echo 'deploy to QA'
+                archiveArtifacts artifacts: '**/*.war'
             }
         }
         stage('Production Environment"') {
