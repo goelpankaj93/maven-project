@@ -14,9 +14,6 @@ pipeline {
             when{
                 branch 'release'
             }
-            steps {
-                echo 'deploy to QA'
-            }
             steps{
                 archiveArtifacts artifacts: '**/*.war'    
             }
