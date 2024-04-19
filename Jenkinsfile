@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers{
+        pollscm('* * * * *')
+    }
 
     stages {
         stage('deploy to dev') {
