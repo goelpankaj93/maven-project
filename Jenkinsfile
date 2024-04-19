@@ -3,7 +3,6 @@ pipeline {
     triggers{
         pollscm('* * * * *')
     }
-
     stages {
         stage('deploy to dev') {
             when{
