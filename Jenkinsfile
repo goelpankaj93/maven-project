@@ -8,6 +8,7 @@ pipeline {
             }
             steps {
                 echo 'deploy to dev'
+                archiveArtifacts artifacts: '**/*.war'
             }
         }
         stage('deploy to QA') {
@@ -16,7 +17,7 @@ pipeline {
             }
             steps {
                 echo 'deploy to QA'
-                archiveArtifacts artifacts: '**/myapp-1.0.0-RC.war'
+                archiveArtifacts artifacts: '**/*.war'
             }
         }
         stage('Production Environment"') {
@@ -25,6 +26,7 @@ pipeline {
             }
             steps {
                 echo 'Production Environment'
+                archiveArtifacts artifacts: '**/*.war'
             }
         }
     }
